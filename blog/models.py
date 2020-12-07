@@ -30,7 +30,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, verbose_name=_('author'), on_delete=models.CASCADE, related_query_name='posts',
                                related_name='posts')
     image = models.ImageField(_('image'), upload_to='images', blank=True, null=True)
-    like = models.BooleanField(_('like'), null=True)
+    like = models.IntegerField(_('like'), default=True)
     created_at = models.DateTimeField(_('creation'), auto_now_add=True)
     updated_at = models.DateTimeField(_('update'), auto_now=True)
     published_at = models.DateTimeField(_('publish_time'), db_index=True)
@@ -38,10 +38,12 @@ class Post(models.Model):
     @property
     def add_like(self):
         self.like += 1
+        self.save()
 
     @property
     def decrease_like(self):
         self.like -= 1
+        self.save()
 
     class Meta:
         verbose_name = 'post'
@@ -51,3 +53,29 @@ class Post(models.Model):
     def __str__(self):
         return f"{self.title} and its category is {self.category}"
 
+class Comment(models.Model):
+    content = models.TextField(_('content'), default=True, null=True)
+    is_confirmed = models.BooleanField(_('confirm'), default=True)
+    like = models.IntegerField(_('like'), default=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_('author'), db_index=True)
+    created_at = models.DateTimeField(_('creation'), auto_now_add=True)
+    updated_at = models.DateTimeField(_('update'), auto_now=True)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, verbose_name=_('post'), related_name='comment', related_query_name='comment')
+
+    @property
+    def comment_like(self):
+        self.like += 1
+        self.save()
+
+    @property
+    def comment_dislike(self):
+        self.like -= 1
+        self.save()
+
+    class Meta:
+        verbose_name = _('comment')
+        verbose_name_plural = _('comments')
+        order_with_respect_to = ['created_at']
+
+    def __str__(self):
+        return f'comment: is written by {self.author}'
