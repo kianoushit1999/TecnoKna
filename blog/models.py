@@ -35,16 +35,6 @@ class Post(models.Model):
     updated_at = models.DateTimeField(_('update'), auto_now=True)
     published_at = models.DateTimeField(_('publish_time'), db_index=True)
 
-    @property
-    def add_like(self):
-        self.like += 1
-        self.save()
-
-    @property
-    def decrease_like(self):
-        self.like -= 1
-        self.save()
-
     class Meta:
         verbose_name = 'post'
         verbose_name_plural = 'posts'
@@ -57,9 +47,11 @@ class Comment(models.Model):
     content = models.TextField(_('content'), default=True, null=True)
     is_confirmed = models.BooleanField(_('confirm'), default=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_('author'), db_index=True)
+    situation = models.BooleanField(_('situation'), default=True)
     created_at = models.DateTimeField(_('creation'), auto_now_add=True)
     updated_at = models.DateTimeField(_('update'), auto_now=True)
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, verbose_name=_('post'), related_name='comment', related_query_name='comment')
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, verbose_name=_('post'), related_name='comment',
+                             related_query_name='comment')
 
     class Meta:
         verbose_name = _('comment')
@@ -70,7 +62,8 @@ class Comment(models.Model):
         return f'comment: is written by {self.author}'
 
 class CommentLike(models.Model):
-    author = models.ForeignKey(User, verbose_name=_('author'), related_name='comment_like', related_query_name='comment_like'
+    author = models.ForeignKey(User, verbose_name=_('author'), related_name='comment_like',
+                               related_query_name='comment_like'
                                , on_delete=models.CASCADE)
     situation = models.BooleanField(_('situation'), default=True)
     comment = models.ForeignKey(Comment, verbose_name=_('comment'), on_delete=models.CASCADE, default=True)
@@ -81,6 +74,7 @@ class CommentLike(models.Model):
         verbose_name = 'comment_like'
         verbose_name_plural = 'comment_likes'
         unique_together = [['author', 'comment']]
+
 
 class PostSetting(models.Model):
     comment = models.OneToOneField(Comment, verbose_name=_("comment"), default=True, on_delete=models.CASCADE)
@@ -93,4 +87,4 @@ class PostSetting(models.Model):
         verbose_name_plural = _("settings")
 
     def __str__(self):
-        return 'active to commenting' if(self.allow_discussion) else 'inactive to commenting'
+        return 'active to commenting' if (self.allow_discussion) else 'inactive to commenting'
