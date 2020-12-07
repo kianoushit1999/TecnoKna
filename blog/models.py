@@ -30,10 +30,17 @@ class Post(models.Model):
     author = models.ForeignKey(User, verbose_name=_('author'), on_delete=models.CASCADE, related_query_name='posts',
                                related_name='posts')
     image = models.ImageField(_('image'), upload_to='images', blank=True, null=True)
-    like = models.IntegerField(_('like'), default=True)
     created_at = models.DateTimeField(_('creation'), auto_now_add=True)
     updated_at = models.DateTimeField(_('update'), auto_now=True)
     published_at = models.DateTimeField(_('publish_time'), db_index=True)
+
+    @property
+    def post_like(self):
+        return Comment.objects.get(post=self, situation=True).count()
+
+    @property
+    def post_dislike(self):
+        Comment.objects.get(post=self, situation=True).count()
 
     class Meta:
         verbose_name = 'post'
@@ -52,6 +59,14 @@ class Comment(models.Model):
     updated_at = models.DateTimeField(_('update'), auto_now=True)
     post = models.ForeignKey(Post, on_delete=models.CASCADE, verbose_name=_('post'), related_name='comment',
                              related_query_name='comment')
+
+    @property
+    def add_like(self):
+        return CommentLike.objects.get(comment=self, situation=True).count()
+
+    @property
+    def dec_like(self):
+        return CommentLike.objects.get(comment=self, situation=False).count()
 
     class Meta:
         verbose_name = _('comment')
