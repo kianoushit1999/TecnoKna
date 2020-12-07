@@ -79,3 +79,16 @@ class Comment(models.Model):
 
     def __str__(self):
         return f'comment: is written by {self.author}'
+
+class PostSetting(models.Model):
+    comment = models.OneToOneField(Comment, verbose_name=_("comment"), default=True, on_delete=models.CASCADE)
+    author = models.BooleanField(_("author"), default=True)
+    allow_discussion = models.BooleanField(_("allow_discuss"), default=True)
+    post = models.OneToOneField(Post, verbose_name=_("post"), on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = _("setting")
+        verbose_name_plural = _("settings")
+
+    def __str__(self):
+        return f'active to comment' if(self.allow_discussion) else f'inactive to commenting'
