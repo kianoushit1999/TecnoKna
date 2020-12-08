@@ -71,7 +71,7 @@ class Comment(models.Model):
     class Meta:
         verbose_name = _('comment')
         verbose_name_plural = _('comments')
-        order_with_respect_to = ['created_at']
+        ordering = ['created_at']
 
     def __str__(self):
         return f'comment: is written by {self.author}'
