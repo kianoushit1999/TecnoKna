@@ -53,3 +53,13 @@ class PostAdmin(admin.ModelAdmin):
         self.message_user(request,
                           _('%d Your selected items become draft') % update, message.SUCCESS)
     be_draft.short_description = "removing draft capability"
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    exclude = ('com_like', 'com_dislike')
+    list_editable = ('author', 'situation')
+    search_fields = ('author', 'situation')
+    list_display = ('author', 'is_confirmed', 'situation', 'author', 'post', 'com_like', 'com_dislike')
+    date_hierarchy = 'created_at'
+
+admin.site.register(CommentLike)

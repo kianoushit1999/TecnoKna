@@ -61,11 +61,11 @@ class Comment(models.Model):
                              related_query_name='comment')
 
     @property
-    def add_like(self):
+    def com_like(self):
         return CommentLike.objects.get(comment=self, situation=True).count()
 
     @property
-    def dec_like(self):
+    def com_dislike(self):
         return CommentLike.objects.get(comment=self, situation=False).count()
 
     class Meta:
