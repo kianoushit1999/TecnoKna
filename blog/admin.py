@@ -65,4 +65,6 @@ class CommentAdmin(admin.ModelAdmin):
     list_display = ('author', 'is_confirmed', 'situation', 'author', 'post', 'com_like', 'com_dislike')
     date_hierarchy = 'created_at'
 
+
+admin.site.register(PostSetting)
 admin.site.register(CommentLike)
