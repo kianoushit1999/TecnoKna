@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.translation import ugettext_lazy as _
 from .models import *
 
 # Register your models here.
@@ -8,9 +9,15 @@ class CategoryItemInline(admin.TabularInline):
     extra = 1
     show_change_link = True
 
-class postItemInline(admin.TabularInline):
+class PostItemInline(admin.TabularInline):
     model = Post
     fields = (('title', 'content'), ('author', 'draft'), 'published_at')
+    extra = 1
+    show_change_link = True
+
+class SettingPostInline(admin.TabularInline):
+    model = PostSetting
+    fields = ('author', 'allow_discussion', 'post', 'comment')
     extra = 1
     show_change_link = True
 
@@ -21,4 +28,28 @@ class CategoryAdmin(admin.ModelAdmin):
     list_filter = ('parent',)
     list_display_links = ('parent',)
 
-    inlines = [postItemInline, CategoryItemInline]
+    inlines = [PostItemInline, CategoryItemInline]
+
+@admin.register(Post)
+class PostAdmin(admin.ModelAdmin):
+    exclude = ('post_like', 'post_dislike')
+    list_display = ('author', 'title', 'content', 'draft', 'published_at', 'category')
+    search_fields = ('author', 'title', 'published_at', 'created_at')
+    list_filter = ('category', 'author', 'draft')
+    date_hierarchy = 'published_at'
+    list_display_links = ('category', 'author', 'title')
+
+    inlines = [SettingPostInline]
+    actions_on_bottom = ['be_draft', 'del_draft']
+
+    def be_draft(self, request, queryset):
+        update = queryset.update(draft=True)
+        self.message_user(request,
+                          _('%d Your selected items become draft') % update, message.SUCCESS)
+    be_draft.short_description = "changing to have draft capability"
+
+    def del_draft(self, request, queryset):
+        update = queryset.update(draft=True)
+        self.message_user(request,
+                          _('%d Your selected items become draft') % update, message.SUCCESS)
+    be_draft.short_description = "removing draft capability"
