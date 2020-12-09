@@ -16,7 +16,7 @@ class Category(models.Model):
         verbose_name_plural = _('categories')
 
     def __str__(self):
-        return f"Your category title is {self.title} ."
+        return f"category : {self.title} ."
 
 
 class Post(models.Model):
@@ -48,7 +48,7 @@ class Post(models.Model):
         ordering = ["published_at", "created_at"]
 
     def __str__(self):
-        return f"{self.title} and its category is {self.category}"
+        return f"Post : {self.title} and  {self.category}"
 
 class Comment(models.Model):
     content = models.TextField(_('content'), default=True, null=True)
@@ -92,7 +92,7 @@ class CommentLike(models.Model):
 
 
 class PostSetting(models.Model):
-    comment = models.OneToOneField(Comment, verbose_name=_("comment"), default=True, on_delete=models.CASCADE)
+    comment = models.BooleanField(_("comment"), default=True)
     author = models.BooleanField(_("author"), default=True)
     allow_discussion = models.BooleanField(_("allow_discuss"), default=True)
     post = models.OneToOneField(Post, verbose_name=_("post"), on_delete=models.CASCADE)

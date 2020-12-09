@@ -39,25 +39,28 @@ class PostAdmin(admin.ModelAdmin):
     date_hierarchy = 'published_at'
     list_display_links = ('category', 'author', 'title')
 
-    inlines = [SettingPostInline]
-    actions_on_bottom = ['be_draft', 'del_draft']
-
     def be_draft(self, request, queryset):
         update = queryset.update(draft=True)
         self.message_user(request,
-                          _('%d Your selected items become draft') % update, message.SUCCESS)
-    be_draft.short_description = "changing to have draft capability"
+                          _('%d Your selected items become draft') % update)
+    be_draft.short_description = "Active draft capability"
 
     def del_draft(self, request, queryset):
-        update = queryset.update(draft=True)
+        update = queryset.update(draft=False)
         self.message_user(request,
-                          _('%d Your selected items become draft') % update, message.SUCCESS)
-    be_draft.short_description = "removing draft capability"
+                          _('%d Your selected items become draft') % update)
+    del_draft.short_description = "removing draft capability"
+
+    inlines = [SettingPostInline]
+    actions = [be_draft, del_draft]
+
+
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
     exclude = ('com_like', 'com_dislike')
-    list_editable = ('author', 'situation')
+    list_editable = ('situation',)
+    list_display_links = ('author',)
     search_fields = ('author', 'situation')
     list_display = ('author', 'is_confirmed', 'situation', 'author', 'post', 'com_like', 'com_dislike')
     date_hierarchy = 'created_at'
