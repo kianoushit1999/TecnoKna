@@ -1,6 +1,9 @@
 from django.shortcuts import render
 
 # Create your views here.
+def home(request):
+    context = {}
+    return render(request, 'blog/blog.html', context=context)
 def show_all_categories(request):
     pass
 
