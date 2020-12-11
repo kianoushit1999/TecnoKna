@@ -1,0 +1,314 @@
+{% extends 'basic/basic.html' %}
+{% load static %}
+
+{% block title %}
+    TecnoWolf
+{% endblock %}
+{% block links %}
+    <link rel="stylesheet" href="static 'blog/blog.css' ">
+{% endblock %}
+{% block main %}
+    <main>
+        <div class="container py-sm-5 ">
+            <h2 class="text-center pb-5" id="title-post-like" data-aos="fade-down" data-aos-duration="3000">Posts With
+                most
+                Like</h2>
+            <div class="row pt-3">
+                <div class="col-lg-4 col-md-6 col-sm-12" id="first_card">
+                    <div class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="{% static 'blog/images/A.jpg' %}"
+                                         alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">A</h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make
+                                            up
+                                            the bulk of the card's content.</p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Cras justo odio</li>
+                                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                                        <li class="list-group-item">Vestibulum at eros</li>
+                                    </ul>
+                                    <div class="card-body">
+                                        <a href="#" class="card-link">Card link</a>
+                                        <a href="#" class="card-link">Another link</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="{% static 'blog/images/B.jpg' %}"
+                                         alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">B</h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make
+                                            up
+                                            the bulk of the card's content.</p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Cras justo odio</li>
+                                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                                        <li class="list-group-item">Vestibulum at eros</li>
+                                    </ul>
+                                    <div class="card-body">
+                                        <a href="#" class="card-link">Card link</a>
+                                        <a href="#" class="card-link">Another link</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="{% static 'blog/images/C.jpg' %}"
+                                         alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">C</h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make
+                                            up
+                                            the bulk of the card's content.</p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Cras justo odio</li>
+                                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                                        <li class="list-group-item">Vestibulum at eros</li>
+                                    </ul>
+                                    <div class="card-body">
+                                        <a href="#" class="card-link">Card link</a>
+                                        <a href="#" class="card-link">Another link</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" id="second-card">
+                    <div class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="{% static 'blog/images/B.jpg' %}"
+                                         alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">B</h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make
+                                            up
+                                            the bulk of the card's content.</p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Cras justo odio</li>
+                                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                                        <li class="list-group-item">Vestibulum at eros</li>
+                                    </ul>
+                                    <div class="card-body">
+                                        <a href="#" class="card-link">dsafds</a>
+                                        <a href="#" class="card-link">Another link</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="{% static 'blog/images/C.jpg' %}"
+                                         alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">C</h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make
+                                            up
+                                            the bulk of the card's content.</p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Cras justo odio</li>
+                                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                                        <li class="list-group-item">Vestibulum at eros</li>
+                                    </ul>
+                                    <div class="card-body">
+                                        <a href="#" class="card-link">Card link</a>
+                                        <a href="#" class="card-link">Another link</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="{% static 'blog/images/A.jpg' %}"
+                                         alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">A</h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make
+                                            up
+                                            the bulk of the card's content.</p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Cras justo odio</li>
+                                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                                        <li class="list-group-item">Vestibulum at eros</li>
+                                    </ul>
+                                    <div class="card-body">
+                                        <a href="#" class="card-link">sadfsdaf</a>
+                                        <a href="#" class="card-link">Another link</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4" id="third-card">
+                    <div class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="{% static 'blog/images/C.jpg' %}"
+                                         alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Title One</h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make
+                                            up
+                                            the bulk of the card's content.</p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Category</li>
+                                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                                        <li class="list-group-item">Vestibulum at eros</li>
+                                    </ul>
+                                    <div class="card-body">
+                                        <a href="#" class="card-link">Card link</a>
+                                        <a href="#" class="card-link">Another link</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="{% static 'blog/images/A.jpg' %}"
+                                         alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">A</h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make
+                                            up
+                                            the bulk of the card's content.</p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Cras justo odio</li>
+                                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                                        <li class="list-group-item">Vestibulum at eros</li>
+                                    </ul>
+                                    <div class="card-body">
+                                        <a href="#" class="card-link">Card link</a>
+                                        <a href="#" class="card-link">Another link</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" src="{% static 'blog/images/B.jpg' %}"
+                                         alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">B</h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make
+                                            up
+                                            the bulk of the card's content.</p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Cras justo odio</li>
+                                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                                        <li class="list-group-item">Vestibulum at eros</li>
+                                    </ul>
+                                    <div class="card-body">
+                                        <a href="#" class="card-link">Card link</a>
+                                        <a href="#" class="card-link">Another link</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-sm-12 text-lg-left text-sm-center" data-aos="fade-right"
+                     data-aos-duration="3000">
+                    <img src="{% static 'blog/images/navbarmani.png' %}" height="500px">
+                </div>
+                <div class="col-lg-8 col-sm-12 text-center">
+                    <h2 class="text-info" data-aos="fade-down" data-aos-duration="3000">You could be author in ourworld
+                        wide
+                        website</h2>
+                    <p data-aos="fade-left" data-aos-duration="3000">
+                        you could be author in our webpage and share your new news with <br>
+                        all of the people in the world and after a while you will be the <br>
+                        <strong class="text-info">Wolf Tecno</strong><br>
+                        in our webpage and you could earn money as bloger.<br>
+                        Do you wanna be wolf lets get start it.<br>
+                        <a data-aos="fade-left" data-aos-duration="2000">
+                            <button type="button" class="btn btn-info btn-lg px-5 mt-md-5 mt-sm-2">Sign Up</button>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center py-lg-5 py-sm-2" id="author">
+            <h2 data-aos="zoom-in" data-aos-duration="2000">Kianoush nasr Azadani</h2>
+            <p data-aos="flip-right" data-aos-duration="2000">
+                Kna is my name that you could find my name in multiple webpage<br>
+                and I love coding and my moral is coding is my life. <br>
+                you could follow me in the following linkes:<br>
+            </p>
+            <div class="d-flex justify-content-center">
+                <a href="#" data-aos="fade-up-right" data-aos-duration="1500"><i
+                        class="fab fa-github-alt py-3 px-3"></i></a>
+                <a href="#" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500"><i
+                        class="fab fa-stack-overflow py-3 px-3"></i></a>
+                <a href="#" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500"><i
+                        class="fab fa-gitlab py-3 px-3"></i></a>
+                <a href="#" data-aos="fade-up-left" data-aos-duration="1500"><i class="fab fa-quora py-3 px-3"></i></a>
+            </div>
+        </div>
+        <div class="text-center py-lg-5 py-sm-2" id="category">
+            <h2 class="py-3" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">Popular catefories
+                that is mentioned in my webpage:</h2>
+            <div class="container py-lg-4 py-sm-3">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-12">
+                        <a href="#" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1500">
+                            <i class="fas fa-atom"></i>
+                            <br>Science
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-sm-12">
+                        <a href="#" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
+                            <i class="fas fa-robot"></i>
+                            <br>Robatics
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-sm-12">
+                        <a href="#" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
+                            <i class="fas fa-microchip"></i>
+                            <br>MircoController
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-sm-12">
+                        <a href="#" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1500">
+                            <i class="fas fa-code"></i>
+                            <br>coding
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="back_wolf py-5">
+            <div class="container-fluid py-5">
+                <div class="text-center">
+                    <h3 data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">Why WolfTecno??</h3>
+                    <p data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1500">every person who blog about
+                        newest tecnology after a while <br>
+                        when the its post like increase become the wolf<br>
+                        and could be able Earn money in our website.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'blog/blog.js' %}"></script>
+{% endblock %}

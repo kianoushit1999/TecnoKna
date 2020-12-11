@@ -1,0 +1,23 @@
+html,body{
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: Sofia;
+}
+body{
+    background:url("images/signup.png") no-repeat center;
+}
+#signin_box{
+    background: rgba(255,255,255,0.2) !important;
+    box-shadow: 2px 2px 20px #074185;
+    border-radius: 20px;
+}
+a{
+    text-decoration: none;
+}
+button{
+    color: white !important;
+    margin: 40px 0px;
+    background: #100051 !important;
+}
