@@ -2,7 +2,6 @@ from django.contrib.auth.models import AbstractUser
 from django.core.validators import RegexValidator
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
-
 # Create your models here.
 
 class User(AbstractUser):
@@ -12,7 +11,7 @@ class User(AbstractUser):
         return f'name:{self.username} and country:{self.country}'
 
 class phone(models.Model):
-    phone_re = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Your phone number should be like this format +9999...")
+    phone_re = RegexValidator(regex=r'^\+?1?\d{10,15}$', message="Your phone number should be like this format +9999...")
     phone = models.CharField(verbose_name=_("phone_number"), validators=phone_re, max_length=17, blank=True,
                              help_text="Enter valid phone number because it'll send you a message at once")
     owner = models.ForeignKey(
