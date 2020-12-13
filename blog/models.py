@@ -1,8 +1,9 @@
-from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from TecnoKna import settings
 
-
+#define User
+User = settings.AUTH_USER_MODEL
 # Create your models here.
 class Category(models.Model):
     title = models.CharField(_("title"), max_length=100)
