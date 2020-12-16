@@ -20,7 +20,11 @@ def sign_up(request):
     pass
 
 def single_post(request, pk):
-    pass
+    post = Post.objects.get(pk=pk)
+    context = {
+        'post': post
+    }
+    return render(request, 'blog/post.html', context=context)
 
 def cat_posts(request, category):
     pass
