@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from  .models import *
 
 # Create your views here.
 def home(request):
@@ -8,7 +9,8 @@ def show_all_categories(request):
     pass
 
 def show_posts(request):
-    context = {}
+    posts = Post.objects.all()
+    context = {'posts':posts}
     return render(request, 'blog/posts.html', context=context)
 
 def sign_in(request):
