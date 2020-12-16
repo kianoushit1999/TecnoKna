@@ -45,15 +45,24 @@
             <h4 class="text-center mt-4 mb-1 text-info">Comments</h4>
         </div>
         <hr>
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">sdfadsfadfsa</h5>
-                    <p class="card-text">title and make up the bulk of the card's content.</p>
-                    <small>author</small>
+        {% for comment in comments %}
+            {% if comment.is_confirmed is True %}
+                <div class="col-12 mt-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ comment.author }}</h5>
+                            <p class="card-text">{{ comment.content }}</p>
+                            <small>{{ comment.published_at }}</small>
+                            {% if comment.situation %}
+                                <i class="fas fa-thumbs-up text-success"></i>
+                            {% else %}
+                                <i class="fas fa-thumbs-down text-danger"></i>
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            {% endif %}
+        {% endfor %}
     </div>
 </main>
 {% include 'basic/footer.html' %}

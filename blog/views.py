@@ -21,8 +21,10 @@ def sign_up(request):
 
 def single_post(request, pk):
     post = Post.objects.get(pk=pk)
+    comments = Comment.objects.filter(post=post)
     context = {
-        'post': post
+        'post': post,
+        'comments': comments
     }
     return render(request, 'blog/post.html', context=context)
 
