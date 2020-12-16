@@ -10,7 +10,7 @@ def show_all_categories(request):
 
 def show_posts(request):
     posts = Post.objects.all()
-    context = {'posts':posts}
+    context = {'posts': posts}
     return render(request, 'blog/posts.html', context=context)
 
 def sign_in(request):
