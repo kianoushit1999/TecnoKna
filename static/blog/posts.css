@@ -6,6 +6,9 @@ html,body{
     font-family: Sofia;
 
 }
+footer{
+    background: #62b8f4;
+}
 a{
     text-decoration: none;
 }

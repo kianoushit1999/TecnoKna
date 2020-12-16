@@ -8,7 +8,8 @@ def show_all_categories(request):
     pass
 
 def show_posts(request):
-    pass
+    context = {}
+    return render(request, 'blog/posts.html', context=context)
 
 def sign_in(request):
     pass
