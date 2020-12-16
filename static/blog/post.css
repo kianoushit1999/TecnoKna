@@ -5,17 +5,23 @@ body, html{
     margin: 0;
 }
 body{
-    background: url("images/shape1.jpg") center no-repeat;
-    background-size: cover;
-    height: 100%;
+    background: #e9f4f8;
+}
+h4,h5,li{
     font-family: 'Bangers';
 }
-h3{
-    text-align: center;
-    color: whitesmoke;
-    text-shadow: 2px 2px 12px #01084f;
+hr{
+    width: 25%;
+    height: 8px;
+    background: #00094a;
 }
-#card_overflow{
-    height: 80px;
-    overflow: auto;
+@media (max-width: 900px) {
+    .card {
+        width: 35rem !important;
+    }
+}
+@media (max-width: 600px) {
+    .card{
+        width: 25rem !important;
+    }
 }

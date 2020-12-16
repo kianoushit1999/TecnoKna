@@ -8,7 +8,7 @@ class User(AbstractUser):
     country = models.CharField(max_length=128, blank=True, null=True)
 
     def __str__(self):
-        return f'name:{self.username} and country:{self.country}'
+        return f'{self.username}'
 
 class Phone(models.Model):
     phone_re = RegexValidator(regex=r'^\+?1?\d{10,15}$', message="Your phone number should be like this format +9999...")

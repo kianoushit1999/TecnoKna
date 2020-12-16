@@ -1,74 +1,73 @@
-{% extends 'basic/basic_all_page.html' %}
 {% load static %}
-{% block title %}
-    <title>Post</title>
-{% endblock %}
-{% block links %}
-    <<link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet'>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="{% static 'blog/css/all.css' %}" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet'>
     <link rel="stylesheet" href="{% static 'blog/post.css' %}">
-{% endblock %}
-{% block  main %}
-<header>
-    <nav class="navbar navbar-light p-0 m-0">
-        <div class="container-fluid justify-content-center">
-            <a class="navbar-brand px-md-3 px-sm-0" href="#">Home</a>
-            <a class="navbar-brand px-md-3 px-sm-0" href="SignUp.html">Sign Up</a>
-            <a class="navbar-brand py-0 pl-md-3 pl-sm-0" href="#">
-                <img src="images/navbarmani.png" height="100" width="100"/>
-            </a>
-            <a class="navbar-brand px-md-3 px-sm-0" href="SignIn.html">Sign In</a>
-            <a class="navbar-brand px-md-3 px-sm-0 mr-sm-0" href="#">Contact Us</a>
-        </div>
-        <section class="container my-auto h-100">
-            <div class="row">
-                <div class="col-12 mt-5">
-                    <div class="card mb-3">
-                        <img class="card-img-top" src="{{ post.image.url }}" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ post.title }}</h5>
-                            <p class="card-text" id="card_overflow">
-                                {{ post.content }}
-                            </p>
-                            <p class="card-text"><small class="text-muted">{{ post.published_at }}</small></p>
-                        </div>
+</head>
+<body>
+{% include 'basic/header.html' %}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center py-3">
+                <div class="card mx-auto" style="width: 45rem;">
+                    <img class="card-img-top" src="{{ post.image.url }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ post.title }}</h4>
+                        <p class="card-text">
+                            {{ post.content }}
+                        </p>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 my-3">
-                        <h3>Author's posts with most like:</h3>
-                    </div>
-                </div>
-                <div class="col-md-4 col-xs-12 ">
-                    <div class="card text-white bg-info mb-3 mx-auto" style="max-width: 18rem;">
-                        <div class="card-header">Header</div>
-                        <div class="card-body">
-                            <h5 class="card-title">Dark card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-xs-12">
-                    <div class="card text-white bg-dark mb-3 mx-auto" style="max-width: 18rem;">
-                        <div class="card-header">Header</div>
-                        <div class="card-body">
-                            <h5 class="card-title">Info card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-xs-12">
-                    <div class="card text-white bg-info mb-3 mx-auto" style="max-width: 18rem;">
-                        <div class="card-header">Header</div>
-                        <div class="card-body">
-                            <h5 class="card-title">Info card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Author : {{ post.author|capfirst }}</li>
+                        <li class="list-group-item">Country : {{ post.author.country|capfirst }}</li>
+                        <li class="list-group-item">LastUpdate: {{ post.updated_at }}</li>
+                        <li class="list-group-item">Published : {{ post.published_at }}</li>
+                    </ul>
                 </div>
             </div>
-        </section>
-    </nav>
-</header>
-{% endblock %}
-{% block js %}
-{% endblock %}
+        </div>
+    </div>
+</section>
+<main class="container">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center mt-4 mb-1 text-info">Comments</h4>
+        </div>
+        <hr>
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">sdfadsfadfsa</h5>
+                    <p class="card-text">title and make up the bulk of the card's content.</p>
+                    <small>author</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% include 'basic/footer.html' %}
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="{% static 'blog/js/bootstrap.js' %}"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</body>
+</html>
