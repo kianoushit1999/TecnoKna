@@ -13,11 +13,6 @@ def show_posts(request):
     context = {'posts': posts}
     return render(request, 'blog/posts.html', context=context)
 
-def sign_in(request):
-    pass
-
-def sign_up(request):
-    pass
 
 def single_post(request, pk):
     post = Post.objects.get(pk=pk)
