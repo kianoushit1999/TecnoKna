@@ -1,7 +1,7 @@
 blog/migrations
-.idea
-venv
-blog/__pycache__
-__pycahe__
-venv
-db.sqlite3
+.idea/
+venv/
+blog/__pycache__/
+__pycahe__/
+venv/
+db.sqlite3/
