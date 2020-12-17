@@ -1,7 +1,5 @@
+.idea
+db.sqlite3
+account/migrations
 blog/migrations
-.idea/
-venv/
-blog/__pycache__/
-__pycahe__/
-venv/
-db.sqlite3/
+media/
