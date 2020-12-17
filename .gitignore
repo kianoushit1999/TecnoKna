@@ -1,5 +1,5 @@
 blog/migrations
 .idea/
-venv
+venv/
 blog/__pycache__/
 __pycche__/
