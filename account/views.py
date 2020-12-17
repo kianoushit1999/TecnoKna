@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
-from  .models import *
+from .models import *
 # Create your views here.
 
 def sign_in(request):
-    pass
-
+    context = {}
+    return render(request, 'enroll/sign_in.html', context=context)
 def sign_up(request):
-    pass
+    context = {}
+    return render(request, 'enroll/sign_up.html', context=context)
