@@ -1,5 +1,6 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-from  .models import *
+from .models import *
 
 # Create your views here.
 def home(request):
@@ -8,6 +9,7 @@ def home(request):
 def show_all_categories(request):
     pass
 
+@login_required
 def show_posts(request):
     posts = Post.objects.all()
     context = {'posts': posts}

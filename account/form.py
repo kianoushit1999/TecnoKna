@@ -1,10 +1,9 @@
 from django import forms
 from django.utils.translation import gettext_lazy as _
-from .models import User
 from django.core.exceptions import ValidationError
 from .validators import phone_validator, pass_validator
 
-class SignUp(forms.Form):
+class SignUpForm(forms.Form):
 
     user_name = forms.CharField(
         label=_('UserName'),
@@ -47,16 +46,3 @@ class SignUp(forms.Form):
         if not pass_validator(password):
             raise ValidationError(_('Your password must be contained alphanumeric and digit'))
         return password
-
-class SignIn(forms.Form):
-    email = forms.EmailField(
-        label=_('Email'),
-        required=True,
-        widget=forms.EmailInput()
-    )
-
-    password = forms.CharField(
-        label=_('password'),
-        required=True,
-        widget=forms.PasswordInput()
-    )

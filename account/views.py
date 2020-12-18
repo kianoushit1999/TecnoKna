@@ -1,17 +1,18 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .models import *
-from .form import SignUp
+from .form import SignUpForm
 from django.views.generic import FormView
+from django.contrib.auth.views import LoginView
 # Create your views here.
 
-def sign_in(request):
-    context = {}
-    return render(request, 'enroll/sign_in.html', context=context)
-
+class sign_in(LoginView):
+    redirect_authenticated_user = True
+    template_name = 'enroll/sign_in.html'
+    success_url = ''
 
 class sign_up(FormView):
-    form_class = SignUp
+    form_class = SignUpForm
     http_method_names = ['get', 'post']
     template_name = 'enroll/sign_up.html'
     success_url = '/signin/'
