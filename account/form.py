@@ -38,11 +38,25 @@ class SignUp(forms.Form):
     def clean(self):
         password = self.cleaned_data.get('password', None)
         password2 = self.cleaned_data.get('password2', None)
+        print(password, password2)
         if password != password2:
-            return ValidationError(_('Your inputed passwords is not compatible to each other'))
+            raise ValidationError(_('Your inputed passwords is not compatible to each other'))
 
     def clean_password(self):
         password = self.cleaned_data.get('password', None)
         if not pass_validator(password):
-            return ValidationError(_('Your password must be contained alphanumeric and digit'))
+            raise ValidationError(_('Your password must be contained alphanumeric and digit'))
         return password
+
+class SignIn(forms.Form):
+    email = forms.EmailField(
+        label=_('Email'),
+        required=True,
+        widget=forms.EmailInput()
+    )
+
+    password = forms.CharField(
+        label=_('password'),
+        required=True,
+        widget=forms.PasswordInput()
+    )
