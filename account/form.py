@@ -2,37 +2,47 @@ from django import forms
 from django.utils.translation import gettext_lazy as _
 from .models import User
 from django.core.exceptions import ValidationError
-class SignUp(forms.ModelForm):
+from .validators import phone_validator, pass_validator
 
-    class Meta:
-        model = User
-        fields = ('user_name', 'first_name', 'last_name', 'email', 'password1', 'password2')
-        widgets = {
-            'email': forms.EmailField,
-            'password1': forms.PasswordInput,
-            'password2': forms.PasswordInput
-        }
+class SignUp(forms.Form):
 
-        labels = {
-            'user_name': _('User'),
-            'first_name': _('First_name'),
-            'last_name': _('Last_name'),
-            'email': _('Email'),
-            'password1': _('Password'),
-            'password2': _('Confirm Password')
-        }
-        help_texts = {
-            'name': _('Some useful help text.'),
-        }
-        error_messages = {
-            'name': {
-                'max_length': _("This Username is too long."),
-            }
-        }
+    user_name = forms.CharField(
+        label=_('UserName'),
+        max_length=120,
+        required=True,
+        widget=forms.TextInput()
+    )
+
+    email = forms.EmailField(
+        label=_('Email'),
+        required=True,
+        widget=forms.EmailInput()
+    )
+    phone = forms.CharField(
+        validators=[phone_validator()],
+        label=_('Phone'),
+        required=True,
+        widget=forms.TextInput()
+    )
+    password = forms.CharField(
+        label=_('password'),
+        required=True,
+        widget=forms.PasswordInput()
+    )
+    password2 = forms.CharField(
+        label=_('confirm password'),
+        required=True,
+        widget=forms.PasswordInput()
+    )
+
+    def clean(self):
+        password = self.cleaned_data.get('password', None)
+        password2 = self.cleaned_data.get('password2', None)
+        if password != password2:
+            return ValidationError(_('Your inputed passwords is not compatible to each other'))
 
     def clean_password(self):
-        password1 = self.cleaned_data['password1']
-        password2 = self.cleaned_data['password2']
-        if password1 != password2:
-            return ValidationError(_('Your inputed passwords is not compatible to each other'))
-        return password1
+        password = self.cleaned_data.get('password', None)
+        if not pass_validator(password):
+            return ValidationError(_('Your password must be contained alphanumeric and digit'))
+        return password

@@ -12,54 +12,31 @@
     <link rel="stylesheet" href="{% static 'blog/SignUp.css' %}">
 </head>
 <body>
-    <div class="container py-5">
-        <div class="row">
-            <div class="row col-12" id="background">
-                <h2 class="text-center">Sign Up page</h2>
-                <div class="col-md-8">
-                    <div>a</div>
-                    <div>a</div>
-                    <div>a</div>
-                    <div>a</div>
-                    <div>a</div>
-                    <div>a</div>
-                    <div>a</div>
+<div class="container py-5">
+    <div class="row">
+        <div class="row col-12" id="background">
+            <h2 class="text-center">Sign Up page</h2>
+            <div class="col-md-8">
+                <form method="POST" action="{% url 'signup' %}">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        {{ field.label_tag }} {{ field }}
+                        <br/>
+                    {% endfor %}
                     <div class="text-center">
-                        <button class="btn btn-info px-4">Submit Your form</button>
+                        <button class="btn btn-info px-4" type="submit">Submit Your form</button>
                     </div>
-                </div>
-                <div class="col-md-4 pr-md-2">
-                    <h3>Note about site:</h3>
-                    <p>
-
-                        aksfdjlkjdafkl;a
-                        afdksjladsfkjlfkakjda;
-                        kladsflkdasjflkad;
-                        klajdsfkljfdaskljadskl
-                        klajdsfkljfadskljj
-                        this is about world action
-                        skfdskdlfajkldj sfaklkl jasdkl
-                        klasdfjkljdasfklj kljdfs akfl
-                        kalsdfjkldfajlk jaldsfk
-                        aksfdjlkjdafkl;a
-                        afdksjladsfkjlfkakjda;
-                        kladsflkdasjflkad;
-                        klajdsfkljfdaskljadskl
-                        klajdsfkljfadskljj
-                        this is about world action
-                        skfdskdlfajkldj sfaklkl jasdkl
-                        klasdfjkljdasfklj kljdfs akfl
-                        kalsdfjkldfajlk jaldsfk
-                        aksfdjlkjdafkl;a
-                        afdksjladsfkjlfkakjda;
-                        kladsflkdasjflkad;
-                        klajdsfkljfdaskljadskl
-                        klajdsfkljfadskljj
-                    </p>
-                </div>
+                </form>
+            </div>
+            <div class="col-md-4 pr-md-2">
+                <h3>Note about site:</h3>
+                <p>
+                    {{ form.errors }}
+                </p>
             </div>
         </div>
     </div>
+</div>
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
