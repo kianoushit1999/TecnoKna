@@ -1,5 +1,4 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
 from .models import *
 from .form import SignUpForm
 from django.views.generic import FormView
