@@ -19,6 +19,7 @@ class ShowPosts(ListView):
     model = Post
     template_name = 'blog/posts.html'
 
+@method_decorator(login_required, name='dispatch')
 class SinglePost(DetailView):
     model = Post
     template_name = 'blog/post.html'
@@ -29,6 +30,7 @@ class SinglePost(DetailView):
         context['comments'] = Comment.objects.filter(post=post)
         return context
 
+@method_decorator(login_required, name='dispatch')
 class CatPosts(DetailView):
     model = Category
     template_name = 'blog/same_cat.html'
