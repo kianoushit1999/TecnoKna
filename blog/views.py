@@ -29,5 +29,12 @@ class SinglePost(DetailView):
         context['comments'] = Comment.objects.filter(post=post)
         return context
 
-def cat_posts(request, category):
-    pass
+class CatPosts(DetailView):
+    model = Category
+    template_name = 'blog/same_cat.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        category = context.get('category', None)
+        context['posts'] = Post.objects.filter(category=category)
+        return context
