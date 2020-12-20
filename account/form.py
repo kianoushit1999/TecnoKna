@@ -27,7 +27,7 @@ class SignUpForm(forms.Form):
                             'outline:none;'
                             'border-radius:7px;'
                             'padding:5px'
-                   })
+                   , 'placeholder': 'something@gmail.com'})
     )
     phone = forms.CharField(
         validators=[phone_validator()],
@@ -38,7 +38,7 @@ class SignUpForm(forms.Form):
                                                'outline:none;'
                                                'border-radius:7px;'
                                                'padding:5px'
-                                      })
+                                      , 'placeholder': '+989132556465'})
     )
     password = forms.CharField(
         label=_('password'),
@@ -48,7 +48,7 @@ class SignUpForm(forms.Form):
                                                    'outline:none;'
                                                    'border-radius:7px;'
                                                    'padding:5px'
-                                          })
+                                          , 'placeholder': 'KianoushNasr1378'})
     )
     password2 = forms.CharField(
         label=_('confirm password'),

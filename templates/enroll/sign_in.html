@@ -28,11 +28,16 @@
                             {{ field }}
                             <br/>
                         {% endfor %}
-                        <div><a href="#">I have forget my password</a></div>
-                        <button type="submit" class="btn btn-info px-5">Submit</button>
+                        <div class="pt-2"><a href="#">I have forget my password</a></div>
+                        <div><a href="{% url 'signup' %}">Sing up now</a></div>
+                        <button type="submit" class="btn btn-info px-5 pt-2 mt-2">Submit</button>
                     </form>
                 </div>
-                <div class="py-2">{{ form.errors }}</div>
+                <div class="">
+                    {% for error,err in form.errors.items %}
+                        <p>{{ err }}</p>
+                    {% endfor %}
+                </div>
             </div>
             <div class="offset-md-3 offset-sm-2"></div>
         </div>
