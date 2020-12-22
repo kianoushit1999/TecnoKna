@@ -63,6 +63,22 @@
                 </div>
             {% endif %}
         {% endfor %}
+        <div class="col-12">
+            <form method="POST" action="{% url 'post' post.slug %}">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="col-12 text-center" style="padding: 10px">
+                        <b>
+                            {{ field.label_tag }}
+                        </b>
+                    </div>
+                    <div class="col-12 text-center" style="margin: 5px auto;">
+                        {{ field }}
+                    </div>
+                {% endfor %}
+                <button type="submit" class="btn btn-info px-5 pt-2 mt-2 offset-4 col-4">Submit</button>
+            </form>
+        </div>
     </div>
 </main>
 {% include 'basic/footer.html' %}
