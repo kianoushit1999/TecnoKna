@@ -11,8 +11,10 @@ class CommentForm(forms.ModelForm):
             'content': Textarea(attrs={
                 'placeholder': 'content of your comment',
                 'style': 'resize:none;'
-                         'width:available;'
-                         'padding-top:50px',
+                         'width:initial;'
+                         'padding-top:50px'
+                         'outline:none'
+                         'border:2px solid gray',
                 'class': 'py-2'
             }),
             'situation': CheckboxInput(attrs={})

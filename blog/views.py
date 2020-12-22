@@ -40,9 +40,18 @@ class SinglePost(DetailView, FormView):
 
     def form_valid(self, form):
         data = self.get_form_kwargs().get('data')
-        print(data)
-        print(self.kwargs)
-        print(self.request.user)
+        content = data.get('content', None)
+        like = True if data.get('situation', None) == 'on' else False
+        slug = self.kwargs.get('slug', None)
+        author = self.request.user
+        post = Post.objects.get(slug__exact=slug)
+        Comment.objects.create(
+            post=post,
+            situation=like,
+            author=author,
+            content=content,
+            is_confirmed=True
+        )
         return HttpResponseRedirect(self.get_success_url())
 
 @method_decorator(login_required, name='dispatch')
