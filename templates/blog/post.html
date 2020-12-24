@@ -48,8 +48,8 @@
         {% for comment in comments %}
             {% if comment.is_confirmed is True %}
                 <div class="col-12 mt-2">
-                    <div class="card">
-                        <div class="card-body">
+                    <div class="card flex-row">
+                        <div class="card-body col-11">
                             <h5 class="card-title">{{ comment.author }}</h5>
                             <p class="card-text">{{ comment.content }}</p>
                             <small>{{ comment.published_at }}</small>
@@ -58,6 +58,10 @@
                             {% else %}
                                 <i class="fas fa-thumbs-down text-danger"></i>
                             {% endif %}
+                        </div>
+                        <div class="col-1 mt-5 text-center">
+                            <a class=""><i class="fas fa-heart text-danger"></i></a>
+                            <small>likes: </small><small id="likes">2</small>
                         </div>
                     </div>
                 </div>
@@ -94,5 +98,18 @@
         crossorigin="anonymous"></script>
 <script type="text/javascript" src="{% static 'blog/js/bootstrap.js' %}"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    {#$(document).ready(() => {#}
+    {#    $("#like").click(function (comment_id, condition, user_id) {#}
+    {#        $.ajax({#}
+    {#            type: "post",#}
+    {#            url: "{% static '' %}",#}
+    {#            data: {{ comment_id, condition, user_id }},#}
+    {#            success: function (response) {#}
+    {#                console.log(response)#}
+    {#            }#}
+    {#        });#}
+    {#    })#}
+</script>
 </body>
 </html>

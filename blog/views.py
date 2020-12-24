@@ -10,6 +10,8 @@ from .models import *
 
 # Create your views here.
 def home(request):
+    post_most_like_by_comment = Post.objects.filter(comment__situation__exact=True).order_by('comment__situation')
+    print(post_most_like_by_comment)
     context = {}
     return render(request, 'blog/blog.html', context=context)
 
@@ -64,3 +66,6 @@ class CatPosts(DetailView):
         category = context.get('category', None)
         context['posts'] = Post.objects.filter(category=category)
         return context
+
+def comment_like(request):
+    pass
