@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="{% static 'blog/css/all.css' %}" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet'>
     <link rel="stylesheet" href="{% static 'blog/post.css' %}">
@@ -69,20 +68,20 @@
             {% endif %}
         {% endfor %}
         <div class="col-12">
-            <form method="POST" action="{% url 'post' post.slug %}">
-                {% csrf_token %}
-                {% for field in form %}
-                    <div class="col-12 text-center" style="padding: 10px">
-                        <b>
-                            {{ field.label_tag }}
-                        </b>
-                    </div>
-                    <div class="col-12 text-center" style="margin: 5px auto;">
-                        {{ field }}
-                    </div>
-                {% endfor %}
-                <button type="submit" class="btn btn-info px-5 pt-2 mt-2 offset-4 col-4">Submit</button>
-            </form>
+            <h4 class="text-center mt-4 mb-1 text-info">Add comments</h4>
+        </div>
+        <hr>
+        <div class="col-12 row flex-row">
+            <textarea class="col-10 form-control" placeholder="Add your comment" rows="8"></textarea>
+            <div class="col-2 text-center my-auto">
+                <div>
+                    <i class="fas fa-thumbs-up text-success thumb"></i>
+                </div>
+                <div>
+                    <i class="fas fa-thumbs-down text-danger thumb"></i>
+                </div>
+            </div>
+            <button type="button" class="btn btn-info px-5 pt-2 mt-2 offset-4 col-4">Submit</button>
         </div>
     </div>
 </main>
@@ -108,10 +107,10 @@
                 success: function (response) {
                     like = response["like"]
                     comment_id = response["comment_id"]
-                    if (like==true){
-                        $("#"+comment_id).text(+$("#"+comment_id).text()+1)
-                    }else{
-                        $("#"+comment_id).text(+$("#"+comment_id).text()-1)
+                    if (like == true) {
+                        $("#" + comment_id).text(+$("#" + comment_id).text() + 1)
+                    } else {
+                        $("#" + comment_id).text(+$("#" + comment_id).text() - 1)
                     }
                     console.log(like)
                 }
