@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet'>
     <link rel="stylesheet" href="{% static 'blog/post.css' %}">
 </head>
@@ -72,13 +71,13 @@
         </div>
         <hr>
         <div class="col-12 row flex-row">
-            <textarea class="col-10 form-control" placeholder="Add your comment" rows="8"></textarea>
+            <textarea class="col-10 form-control" placeholder="Add your comment" rows="8" style="resize: none"></textarea>
             <div class="col-2 text-center my-auto">
                 <div>
-                    <i class="fas fa-thumbs-up text-success thumb"></i>
+                    <i class="fas fa-thumbs-up text-success mb-2 thumb" style="font-size: 75px"></i>
                 </div>
                 <div>
-                    <i class="fas fa-thumbs-down text-danger thumb"></i>
+                    <i class="fas fa-thumbs-down text-danger mt-2 thumb" style="font-size: 75px"></i>
                 </div>
             </div>
             <button type="button" class="btn btn-info px-5 pt-2 mt-2 offset-4 col-4">Submit</button>

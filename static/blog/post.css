@@ -15,9 +15,7 @@ hr{
     height: 8px;
     background: #00094a;
 }
-.thumb{
-    font-size: 50px;
-}
+
 @media (max-width: 900px) {
     .card {
         width: 35rem !important;
@@ -27,4 +25,10 @@ hr{
     .card{
         width: 25rem !important;
     }
+}
+.thumb{
+    font-size: 50px;
+}
+textarea{
+    resize: none;
 }
