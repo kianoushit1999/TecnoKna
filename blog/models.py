@@ -63,11 +63,11 @@ class Comment(models.Model):
 
     @property
     def com_like(self):
-        return CommentLike.objects.get(comment=self, situation=True).count()
+        return CommentLike.objects.filter(comment=self, situation=True).count()
 
     @property
     def com_dislike(self):
-        return CommentLike.objects.get(comment=self, situation=False).count()
+        return CommentLike.objects.filter(comment=self, situation=False).count()
 
     class Meta:
         verbose_name = _('comment')

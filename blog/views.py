@@ -1,12 +1,16 @@
+import json
+from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseForbidden, HttpResponseRedirect
+from django.db.models import Q
+from django.http import HttpResponseForbidden, HttpResponseRedirect, HttpResponse, JsonResponse
 from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView, DetailView, FormView
 from django.shortcuts import render
 from django.urls import reverse
-
 from .form import CommentForm
 from .models import *
+User = get_user_model()
 
 # Create your views here.
 def home(request):
@@ -66,6 +70,21 @@ class CatPosts(DetailView):
         category = context.get('category', None)
         context['posts'] = Post.objects.filter(category=category)
         return context
-
+@csrf_exempt
 def comment_like(request):
-    pass
+    flag = True
+    post_slug, pk, author = json.loads(request.body).split(',')
+    post = Post.objects.get(slug=post_slug)
+    comment = Comment.objects.get(Q(pk=int(pk)) & Q(post=post))
+    user = User.objects.get(username=author)
+    try:
+        comment_like: CommentLike = CommentLike.objects.get(Q(author=user) & Q(comment__exact=comment))
+        comment_like.delete()
+        flag = False
+    except Exception:
+        CommentLike.objects.create(author=user, comment=comment)
+    response = {
+        "like": flag,
+        "comment_id": comment.pk
+    }
+    return JsonResponse(response)
