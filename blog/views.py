@@ -70,3 +70,15 @@ def comment_like(request):
         "comment_id": comment.pk
     }
     return JsonResponse(response)
+
+@csrf_exempt
+def comment(request):
+    data = json.loads(request.body)
+    author = data.get('author')
+    post_slug = data.get('post')
+    condition = data.get('condition')
+    content = data.get("content")
+    post = Post.objects.get(slug=post_slug)
+    user = User.objects.get(username=author)
+    Comment.objects.create(post=post, situation=condition, author=user, content=content)
+    return HttpResponse(status=200)

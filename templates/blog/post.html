@@ -71,16 +71,22 @@
         </div>
         <hr>
         <div class="col-12 row flex-row">
-            <textarea class="col-10 form-control" placeholder="Add your comment" rows="8" style="resize: none"></textarea>
+            <textarea class="col-10 form-control" placeholder="Add your comment" rows="8"
+                      value="{{ post.slug }},{{ request.user }}"
+                      id="textarea_comment"></textarea>
             <div class="col-2 text-center my-auto">
                 <div>
-                    <i class="fas fa-thumbs-up text-success mb-2 thumb" style="font-size: 75px"></i>
+                    <a id="thumb_up" value="true">
+                        <i class="fas fa-thumbs-up text-success mb-2 thumb"></i>
+                    </a>
                 </div>
                 <div>
-                    <i class="fas fa-thumbs-down text-danger mt-2 thumb" style="font-size: 75px"></i>
+                    <a id="thumb_down" value="">
+                        <i class="fas fa-thumbs-down text-danger mt-2 thumb"></i>
+                    </a>
                 </div>
             </div>
-            <button type="button" class="btn btn-info px-5 pt-2 mt-2 offset-4 col-4">Submit</button>
+            <button type="button" class="btn btn-info px-5 pt-2 mt-2 offset-4 col-4" id="form_submit">Submit</button>
         </div>
     </div>
 </main>
@@ -115,6 +121,38 @@
                 }
             });
         })
+        $('#form_submit').click(function () {
+            var content = $('#textarea_comment').val()
+            var post= $('#textarea_comment').attr("value").split(',')[0]
+            var author= $('#textarea_comment').attr("value").split(',')[1]
+            var like = $("#thumb_up").attr('value')
+            var condition = (like == 'true') ? true : false;
+            var data = {
+                author,
+                post,
+                condition,
+                content
+            }
+
+            $.ajax({
+                type: "post",
+                url: "{% url 'comment' %}",
+                data: JSON.stringify(data),
+                success: function (response) {
+                    console.log("ok")
+                    console.log(like)
+                }
+            });
+        })
+
+        $("#thumb_up").click(function () {
+            $(this).attr('value', 'true');
+            $("#thumb_down").attr('value', 'false')
+        });
+
+        $("#thumb_down").click(function () {
+            $("#thumb_up").attr('value', 'false')
+        });
     })
 </script>
 </body>
