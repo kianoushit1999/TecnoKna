@@ -108,6 +108,7 @@
     $(document).ready(() => {
         $('.like').click(function () {
             var data = $(this).attr("value")
+            console.log(data)
             $.ajax({
                 type: "post",
                 url: "{% url 'comment_like' %}",
@@ -142,7 +143,7 @@
                 url: "{% url 'comment' %}",
                 data: JSON.stringify(data),
                 success: function (response) {
-                    console.log(response['pk'])
+                    console.log(post, response['pk'], author)
                     $('#comments').append(`
                         <div class="col-12 mt-2">
                     <div class="card flex-row">
