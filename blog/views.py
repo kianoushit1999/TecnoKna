@@ -80,5 +80,9 @@ def comment(request):
     content = data.get("content")
     post = Post.objects.get(slug=post_slug)
     user = User.objects.get(username=author)
-    Comment.objects.create(post=post, situation=condition, author=user, content=content)
-    return HttpResponse(status=200)
+    comment = Comment(post=post, situation=condition, author=user, content=content, is_confirmed=True)
+    comment.save()
+    response = {
+        "pk": comment.pk
+    }
+    return JsonResponse(response)
