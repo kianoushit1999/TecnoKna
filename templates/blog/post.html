@@ -14,6 +14,17 @@
 </head>
 <body>
 {% include 'basic/header.html' %}
+<div id="left-bottom-info">
+    <div id="pop_over" class="text-center">
+        <h4>Name</h4>
+        <div>Personal page</div>
+        <div>Add Post</div>
+        <div>Logout</div>
+    </div>
+    <div id="foo">
+        <i class="fas fa-user"></i>
+    </div>
+</div>
 <section>
     <div class="container">
         <div class="row">
@@ -73,7 +84,7 @@
             <h4 class="text-center mt-4 mb-1 text-info">Add comments</h4>
         </div>
         <hr>
-        <div class="col-12 row flex-row">
+        <div class="col-12 row flex-row pl-2">
             <textarea class="col-10 form-control" placeholder="Add your comment" rows="8"
                       value="{{ post.slug }},{{ request.user }}"
                       id="textarea_comment"></textarea>
@@ -104,6 +115,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="{% static 'blog/post.js' %}" type="text/javascript"></script>
 <script>
     $(document).ready(() => {
         $('.like').click(function () {
@@ -177,5 +189,4 @@
     })
 </script>
 </body>
-
 </html>
