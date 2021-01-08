@@ -86,3 +86,4 @@ def comment(request):
         "pk": comment.pk
     }
     return JsonResponse(response)
+
