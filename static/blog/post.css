@@ -1,27 +1,85 @@
-body, html{
+body, html {
     height: 100%;
-    width:100%;
-    padding:0;
+    width: 100%;
+    padding: 0;
     margin: 0;
 }
-body{
+
+body {
     background: #e9f4f8;
 }
-h4,h5,li{
+
+h4, h5, li {
     font-family: 'Bangers';
 }
-hr{
+
+hr {
     width: 25%;
     height: 8px;
     background: #00094a;
 }
+
 @media (max-width: 900px) {
     .card {
         width: 35rem !important;
     }
 }
+
 @media (max-width: 600px) {
-    .card{
+    .card {
         width: 25rem !important;
     }
+}
+
+.thumb {
+    font-size: 50px;
+}
+
+textarea {
+    resize: none;
+}
+
+#foo {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background-color: #00f4e8;
+    height: 70px;
+    width: 70px;
+    margin: 60px;
+    border-radius: 50%;
+    padding-top: 21px;
+    padding-left: 22px;
+    box-shadow: 1px 1px 12px #074185;
+}
+
+i {
+    color: #100051;
+    font-size: 30px;
+}
+
+#pop_over {
+    box-shadow: 1px 1px 18px #a0bfaa;
+    height: 200px;
+    width: 140px;
+    position: fixed;
+    bottom: 95px;
+    right: 0;
+    margin-right: 30px;
+    margin-buttom: 30px;
+    border-radius: 16px;
+    padding: 2px 5px;
+    line-height: 25px;
+    display: none;
+}
+
+.rotate {
+    transform: rotate(-360deg);
+    /*transform: rotate(180deg);*/
+    transition: .5s;
+}
+
+.rotate-reset {
+    transform: rotate(360deg);
+    transition: .5s;
 }

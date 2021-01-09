@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'blog',
     'account',
 ]
@@ -130,5 +131,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 #LOGIN_URL
-LOGIN_REDIRECT_URL = '/blog/posts/'
+LOGIN_REDIRECT_URL = '/posts/'
 LOGIN_URL = '/signin/'
+LOGOUT_REDIRECT_URL = '/signin/'
