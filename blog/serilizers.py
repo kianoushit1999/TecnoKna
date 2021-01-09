@@ -10,6 +10,7 @@ class CategorySerilizers(serializers.Serializer):
 
 class PostsSerilizers(serializers.Serializer):
     author_info = UserSerilizers(source='author', read_only=True)
+    category_info = CategorySerilizers(source='category', read_only=True)
     class Meta:
         model = Post
         fields = [
