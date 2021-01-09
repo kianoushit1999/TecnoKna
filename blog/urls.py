@@ -7,6 +7,7 @@ from django.conf.urls.static import static
 
 router.register(r'posts', PostsViewSet)
 router.register(r'comments', CommentViewSet)
+router.register(r'categories', CategoriesViewSet)
 
 urlpatterns = [
                   path('home/', home, name='home'),
@@ -15,6 +16,6 @@ urlpatterns = [
                   path('single_post/<slug:slug>', SinglePost.as_view(), name='post'),
                   path('cat_posts/<slug:slug>', CatPosts.as_view(), name='category'),
                   path('comment_like/', comment_like, name='comment_like'),
-                  path('comment/', comment, name='comment'),
+                  path('comment/', comment, name='comment')
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + \
               static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

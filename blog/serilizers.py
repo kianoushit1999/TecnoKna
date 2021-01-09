@@ -6,7 +6,7 @@ class CategorySerilizers(serializers.Serializer):
 
     class Meta:
         model = Category
-        fields = "__all__"
+        fields = '__all__'
 
 class PostsSerilizers(serializers.Serializer):
     author_info = UserSerilizers(source='author', read_only=True)
@@ -19,7 +19,7 @@ class PostsSerilizers(serializers.Serializer):
             'slug',
             'content',
             'author',
-            'category',
+            'category'
         ]
 
 class CommentSerilizers(serializers.ModelSerializer):

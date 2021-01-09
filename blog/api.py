@@ -8,8 +8,13 @@ from rest_framework.views import APIView
 from rest_framework import mixins
 from rest_framework import generics
 from blog.models import Post, Comment
-from blog.serilizers import PostsSerilizers, CommentSerilizers
+from blog.serilizers import *
 from rest_framework.viewsets import ModelViewSet
+
+
+class CategoriesViewSet(ModelViewSet):
+    serializer_class = CategorySerilizers
+    queryset = Category.objects.all()
 
 class PostsViewSet(ModelViewSet):
     serializer_class = PostsSerilizers
@@ -21,6 +26,7 @@ class PostsViewSet(ModelViewSet):
         post_comments = post.comment.all()
         serializer = CommentSerilizers(post_comments, many=True)
         return Response(serializer.data)
+
 
 class CommentViewSet(ModelViewSet):
     serializer_class = CommentSerilizers
@@ -62,7 +68,6 @@ class CommentViewSet(ModelViewSet):
 #
 #     def delete(self, request, *args, **kwargs):
 #         return self.destroy(request, *args, **kwargs)
-
 
 
 # @api_view(['GET', 'POST'])
