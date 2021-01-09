@@ -3,7 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from rest_framework import status
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, action
 from rest_framework.views import APIView
 from rest_framework import mixins
 from rest_framework import generics
@@ -11,11 +11,18 @@ from blog.models import Post, Comment
 from blog.serilizers import PostsSerilizers, CommentSerilizers
 from rest_framework.viewsets import ModelViewSet
 
-class PostsInfo(ModelViewSet):
+class PostsViewSet(ModelViewSet):
     serializer_class = PostsSerilizers
     queryset = Post.objects.all()
 
-class CommentInfo(ModelViewSet):
+    @action(detail=True, methods=['GET'])
+    def comments(self, request, pk=None):
+        post = self.get_object()
+        post_comments = post.comment.all()
+        serializer = CommentSerilizers(post_comments, many=True)
+        return Response(serializer.data)
+
+class CommentViewSet(ModelViewSet):
     serializer_class = CommentSerilizers
     queryset = Comment.objects.all()
 

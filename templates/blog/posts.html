@@ -94,10 +94,10 @@
     </main>
     <div id="left-bottom-info">
         <div id="pop_over" class="text-center">
-            <h4>Name</h4>
+            <h4>{{ request.user }}</h4>
             <div>Personal page</div>
             <div>Add Post</div>
-            <div>Logout</div>
+            <div><a href="{% url 'logout' %}">Logout</a></div>
         </div>
         <div id="foo">
             <i class="fas fa-user"></i>

@@ -3,6 +3,7 @@ from .models import *
 from .form import SignUpForm
 from django.views.generic import FormView
 from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LogoutView
 # Create your views here.
 
 class sign_in(LoginView):
@@ -28,3 +29,6 @@ class sign_up(FormView):
         user.save()
         Phone.objects.create(phone=phone, owner=user)
         return HttpResponseRedirect(self.get_success_url())
+
+class LogOut(LogoutView):
+    template_name = None
