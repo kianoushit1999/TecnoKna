@@ -30,18 +30,9 @@ class CommentSerilizers(serializers.ModelSerializer):
         model = Comment
         fields = "__all__"
 
-# class CommentSerilizers(serializers.Serializer):
-#     id = serializers.IntegerField(read_only=True)
-#     content = serializers.CharField()
-#     author = UserSerilizers(read_only=True)
-#     situation = serializers.BooleanField()
-#     post = PostsSerilizers(read_only=True)
-#
-#     def create(self, validated_data):
-#         return Comment.objects.create(**validated_data)
-#
-#     def update(self, instance, validated_data):
-#         instance.content = validated_data.get('content', instance.content)
-#         instance.situation = validated_data.get('situation', instance.situation)
-#         instance.save()
-#         return instance
+
+class PostSettingSerializers(serializers.ModelSerializer):
+
+    class Meta:
+        model = PostSetting
+        fields = "__all__"

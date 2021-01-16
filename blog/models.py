@@ -96,7 +96,7 @@ class PostSetting(models.Model):
     comment = models.BooleanField(_("comment"), default=True)
     author = models.BooleanField(_("author"), default=True)
     allow_discussion = models.BooleanField(_("allow_discuss"), default=True)
-    post = models.OneToOneField(Post, verbose_name=_("post"), on_delete=models.CASCADE)
+    post = models.OneToOneField(Post, related_name='settings', verbose_name=_("post"), on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = _("setting")
