@@ -22,7 +22,7 @@ class PostsViewSet(ModelViewSet):
     def comments(self, request, pk=None):
         post = self.get_object()
         post_comments = post.comment.all()
-        serializer = CommentSerilizers(post_comments, many=True)
+        serializer = CommentSerializers(post_comments, many=True)
         return Response(serializer.data)
 
     @action(detail=True, methods=['POST'])
@@ -51,7 +51,15 @@ class PostsViewSet(ModelViewSet):
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
 
+
 class CommentViewSet(ModelViewSet):
-    serializer_class = CommentSerilizers
+    serializer_class = CommentSerializers
     queryset = Comment.objects.all()
     authentication_classes = [SessionAuthentication, BasicAuthentication]
+
+    @action(detail=True, methods=['GET'])
+    def comment_like(self, request, pk=None):
+        comment = self.get_object()
+        likes = comment.comments_like.all()
+        serializer = CommentSerializers(likes, many=True)
+        return Response(serializer.data)

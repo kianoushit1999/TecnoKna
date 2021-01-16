@@ -82,7 +82,7 @@ class CommentLike(models.Model):
                                related_query_name='comment_like'
                                , on_delete=models.CASCADE)
     situation = models.BooleanField(_('situation'), default=True)
-    comment = models.ForeignKey(Comment, verbose_name=_('comment'), on_delete=models.CASCADE, default=True)
+    comment = models.ForeignKey(Comment, verbose_name=_('comment'), related_name="comments_like" ,on_delete=models.CASCADE, default=True)
     created_at = models.DateTimeField(_('created_at'), auto_now_add=True)
     updated_at = models.DateTimeField(_('updated_at'), auto_now=True)
 
