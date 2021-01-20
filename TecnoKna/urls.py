@@ -19,6 +19,7 @@ from rest_framework.routers import DefaultRouter
 from account.api import UserViewSet
 from . import settings
 from django.conf.urls.static import static
+from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token, verify_jwt_token
 
 router = DefaultRouter()
 router.register(r'users', UserViewSet)
@@ -27,6 +28,9 @@ urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('', include('blog.urls')),
                   path('', include('account.urls')),
-                  path('api/', include(router.urls))
+                  path(r'auth/', obtain_jwt_token),
+                  path(r'auth-refresh/', refresh_jwt_token),
+                  path(r'auth-verify/', verify_jwt_token),
+                  path('api/', include(router.urls)),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + \
               static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
