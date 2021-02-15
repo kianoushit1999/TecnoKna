@@ -142,3 +142,4 @@ cython_debug/
 
 .idea/dataSources.xml
 blog/__pycache__/
+TecnoKna/__pycache__/
